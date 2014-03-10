@@ -1155,6 +1155,10 @@ let result = let callPackage = x : y : modifyPrio (newScope result.finalReturn x
     cabal = self.cabal.override { enableLibraryProfiling = false; }; # pkg cannot be built with profiling enabled
   };
 
+  ghcjsCodemirror = callPackage ../development/libraries/haskell/ghcjs-codemirror {};
+
+  ghcjsDom = callPackage ../development/libraries/haskell/ghcjs-dom {};
+
   ghcMod = callPackage ../development/libraries/haskell/ghc-mod {
     inherit (pkgs) emacs;
   };
@@ -1238,12 +1242,20 @@ let result = let callPackage = x : y : modifyPrio (newScope result.finalReturn x
     libc = pkgs.stdenv.gcc.libc;
   };
 
+  gtk3 = callPackage ../development/libraries/haskell/gtk3 {
+    inherit (pkgs) gtk3;
+  };
+
   gtk2hsBuildtools = callPackage ../development/libraries/haskell/gtk2hs-buildtools {};
   gtk2hsC2hs = self.gtk2hsBuildtools;
 
   gtksourceview2 = callPackage ../development/libraries/haskell/gtksourceview2 {
     inherit (pkgs.gnome) gtksourceview;
     libc = pkgs.stdenv.gcc.libc;
+  };
+
+  gtksourceview3 = callPackage ../development/libraries/haskell/gtksourceview3 {
+    inherit (pkgs.gnome3) gtksourceview;
   };
 
   gtkTraymanager = callPackage ../development/libraries/haskell/gtk-traymanager {};
@@ -1539,10 +1551,14 @@ let result = let callPackage = x : y : modifyPrio (newScope result.finalReturn x
 
   ixShapable = callPackage ../development/libraries/haskell/ix-shapable {};
 
+  jmacro = callPackage ../development/libraries/haskell/jmacro {};
+
   JuicyPixels = callPackage ../development/libraries/haskell/JuicyPixels {};
 
   jpeg = callPackage ../development/libraries/haskell/jpeg {};
 
+  jsaddle = callPackage ../development/libraries/haskell/jsaddle {};
+  
   JsContracts = callPackage ../development/libraries/haskell/JsContracts {
     WebBits = self.WebBits_1_0;
     WebBitsHtml = self.WebBitsHtml_1_0_1;
@@ -2522,10 +2538,16 @@ let result = let callPackage = x : y : modifyPrio (newScope result.finalReturn x
 
   vacuumCairo = callPackage ../development/libraries/haskell/vacuum-cairo {};
 
+  vcsgui = callPackage ../development/libraries/haskell/vcsgui {};
+  vcswrapper = callPackage ../development/libraries/haskell/vcswrapper {};
+
+  vado = callPackage ../development/libraries/haskell/vado {};
+
   vault = callPackage ../development/libraries/haskell/vault {};
 
   vcsRevision = callPackage ../development/libraries/haskell/vcs-revision {};
 
+  
   Vec = callPackage ../development/libraries/haskell/Vec {};
 
   vect = callPackage ../development/libraries/haskell/vect {};
@@ -2589,6 +2611,14 @@ let result = let callPackage = x : y : modifyPrio (newScope result.finalReturn x
   };
   WebBitsHtml = self.WebBitsHtml_1_0_2;
 
+  webkitgtk3 = callPackage ../development/libraries/haskell/webkitgtk3 {
+    inherit (pkgs) webkitgtk;
+  };
+
+  webkitgtk3Javascriptcore = callPackage ../development/libraries/haskell/webkitgtk3-javascriptcore {
+    inherit (pkgs) webkitgtk;
+  };
+  
   webRoutes = callPackage ../development/libraries/haskell/web-routes {};
 
   webRoutesBoomerang = callPackage ../development/libraries/haskell/web-routes-boomerang {};
@@ -2824,6 +2854,8 @@ let result = let callPackage = x : y : modifyPrio (newScope result.finalReturn x
 
   leksah = callPackage ../applications/editors/leksah {
     QuickCheck = self.QuickCheck2;
+    haskell-gtk3 = self.gtk3;
+    gtk3 = pkgs.gtk3;
   };
 
   nc-indicators = callPackage ../applications/misc/nc-indicators {};
