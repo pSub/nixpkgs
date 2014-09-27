@@ -4201,6 +4201,8 @@ let
 
   libsigrokdecode = callPackage ../development/tools/libsigrokdecode { };
 
+  lint-review = callPackage ../development/tools/lint-review { };
+
   dejagnu = callPackage ../development/tools/misc/dejagnu { };
 
   dfeet = callPackage ../development/tools/misc/d-feet {

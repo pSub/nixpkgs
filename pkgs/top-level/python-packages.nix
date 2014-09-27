@@ -760,6 +760,111 @@ let
     };
   };
 
+  celery = pythonPackages.buildPythonPackage  rec {
+    name = "celery-3.1.15";
+
+    src = fetchurl {
+      url = "https://pypi.python.org/packages/source/c/celery/${name}.tar.gz";
+      sha256 = "1qz9vgjfmqp9s3nbw4x360hgzpdg69jsgsvybzs8m0bnkh5mswc4";
+    };
+
+    buildInputs = with pythonPackages; [ kombu billiard pytz amqp anyjson mock nose unittest2 ];
+
+    meta = with stdenv.lib; {
+      description = "";
+    };
+  };
+
+  kombu = pythonPackages.buildPythonPackage  rec {
+    name = "kombu-3.0.23";
+
+    src = fetchurl {
+      url = "https://pypi.python.org/packages/source/k/kombu/${name}.tar.gz";
+      sha256 = "05pchzxcx84kkznfsrczwky4nsw6qyirp5q3xq00z8biwqy3x324";
+    };
+
+    buildInputs = with pythonPackages; [ amqp anyjson mock unittest2 nose ];
+
+    meta = with stdenv.lib; {
+      description = "";
+    };
+  };
+
+  amqp = pythonPackages.buildPythonPackage  rec {
+    name = "amqp-1.4.6";
+
+    src = fetchurl {
+      url = "https://pypi.python.org/packages/source/a/amqp/${name}.tar.gz";
+      sha256 = "0h76dnqfbc6fslwr7lx86n2gyslfv2x1vl8lpbszjs2svrkwikzb";
+    };
+
+    buildInputs = with pythonPackages; [ mock coverage nose-cover3 nose unittest2 ];
+
+    meta = with stdenv.lib; {
+      description = "";
+    };
+  };
+
+  nose-cover3 = pythonPackages.buildPythonPackage  rec {
+    name = "nose-cover3-0.1.0";
+
+    src = fetchurl {
+      url = "https://pypi.python.org/packages/source/n/nose-cover3/${name}.tar.gz";
+      sha256 = "1la4hhc1yszjpcchvkqk5xmzlb2g1b3fgxj9wwc58qc549whlcc1";
+    };
+
+    buildInputs = with pythonPackages; [ ];
+
+    meta = with stdenv.lib; {
+      description = "";
+    };
+  };
+
+  billiard = pythonPackages.buildPythonPackage  rec {
+    name = "billiard-3.3.0.18";
+
+    src = fetchurl {
+      url = "https://pypi.python.org/packages/source/b/billiard/${name}.tar.gz";
+      sha256 = "1hc32piqn61y9mgd3s1yk08y3fgz6mvwa5cwlhr1dh8lycv41h2r";
+    };
+
+    buildInputs = with pythonPackages; [ mock nose-cover3 nose unittest2 ];
+
+    meta = with stdenv.lib; {
+      description = "";
+    };
+  };
+
+  pygithub3 = pythonPackages.buildPythonPackage  rec {
+    name = "pygithub3-0.5";
+
+    src = fetchurl {
+      url = "https://pypi.python.org/packages/source/p/pygithub3/${name}.tar.gz";
+      sha256 = "0qvmbadb82jxf309n91izwx7wrwpwmmmpn1rs36if8zk4182j29k";
+    };
+
+    buildInputs = with pythonPackages; [ requests-0140 mock nose ];
+
+    meta = with stdenv.lib; {
+      description = "";
+    };
+  };
+
+  requests-0140 = pythonPackages.buildPythonPackage  rec {
+    name = "requests-0.14.0";
+
+    src = fetchurl {
+      url = "https://pypi.python.org/packages/source/r/requests/${name}.tar.gz";
+      sha256 = "0fxc84gpbmqqi9izqca3z38dl6lywwafp9n7lp4sid2s4yh0nsaf";
+    };
+
+    buildInputs = with pythonPackages; [ mock  ];
+
+    meta = with stdenv.lib; {
+      description = "";
+    };
+  };
+
   responses = pythonPackages.buildPythonPackage rec {
     name = "responses-0.2.2";
 
