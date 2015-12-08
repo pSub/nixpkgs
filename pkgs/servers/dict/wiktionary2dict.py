@@ -17,7 +17,7 @@ class Text:
 class TemplateCall:
     def __init__(self):
         pass
-    def process(self):
+    def process(self)   :
         pass
 
 class Template:
