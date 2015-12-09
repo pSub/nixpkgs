@@ -17,7 +17,7 @@ class Text:
 class TemplateCall:
     def __init__(self):
         pass
-    def process(self):
+    def process(self)   :
         pass
 
 class Template:
@@ -138,7 +138,7 @@ def processSub(templates, tokens, args):
         return "en"
     return "{{{%s}}}" % name
 
-def processTemplateCall(templates, tokens, args):
+def processTemplateCall(templates, tokens, args)   :
     template = tokens.next().strip().lower()
     args = {}
     a = 1
