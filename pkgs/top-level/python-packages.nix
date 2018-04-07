@@ -14003,6 +14003,28 @@ in {
 
   requestsexceptions = callPackage ../development/python-modules/requestsexceptions {};
 
+  requests_kerberos = buildPythonPackage rec {
+    name = "requests_kerberos-${version}";
+    version = "0.12.0";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "requests";
+      repo = "requests-kerberos";
+      rev = "v${version}";
+      sha256 = "1qw96aw84nljh9cip372mfv50p1yyirfgigavvavgpc3c5g278s6";
+    };
+
+    buildInputs = with self; [ requests cryptography pykerberos mock ];
+
+    doCheck = false;
+
+    meta = {
+      homepage = https://github.com/requests/requests-kerberos;
+      description = "An authentication handler for using Kerberos with Python Requests";
+      license = licenses.isc;
+    };
+  };
+
   requests_ntlm = callPackage ../development/python-modules/requests_ntlm { };
 
   requests_oauthlib = callPackage ../development/python-modules/requests-oauthlib { };
@@ -18308,6 +18330,23 @@ EOF
       maintainers = with maintainers; [ lovek323 rickynils ];
       platforms   = platforms.unix;
     };
+  };
+
+  pykerberos = buildPythonPackage rec {
+      name = "pykerberos-1.2.1";
+
+      src = pkgs.fetchurl {
+        url = "mirror://pypi/p/pykerberos/${name}.tar.gz";
+        sha256 = "0v47p840myqgc7hr4lir72xshcfpa0w8j9n077h3njpqyn6wlbag";
+      };
+
+      buildInputs = [ pkgs.kerberos ];
+      
+      meta = {
+        description = "High-level interface to Kerberos";
+        homepage = https://github.com/02strich/pykerberos;
+        license = licenses.asl20;
+      };
   };
 
   pykka = buildPythonPackage rec {

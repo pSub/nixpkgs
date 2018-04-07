@@ -2,18 +2,18 @@
 
 pythonPackages.buildPythonApplication rec {
   name = "nagstamon-${version}";
-  version = "2.0.1";
+  version = "3.0.2";
 
   src = fetchurl {
     url = "https://nagstamon.ifw-dresden.de/files/stable/Nagstamon-${version}.tar.gz";
-    sha256 = "3d4b22190d47250b175a4a70b12391c694ba2399832320887e5909e1ce3dfd7b";
+    sha256 = "17bgcjy1bjysipr5y2maws062ayklxbj9xj0hpn8i3xdqjrzpsd6";
   };
 
   # Test assumes darwin
   doCheck = false;
 
   propagatedBuildInputs = with pythonPackages; [ configparser pyqt5 psutil requests
-     beautifulsoup4  ];
+     beautifulsoup4 keyring requests_kerberos kerberos ];
 
   meta = with stdenv.lib; {
     description = "A status monitor for the desktop";
